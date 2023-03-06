@@ -9,7 +9,13 @@ import {
   Button,
 } from "reactstrap";
 
-const SearchComponent = () => {
+const SearchComponent = ({
+  recipeSearchFilter,
+  updateFormSelect,
+  handleSearchRecipeClick,
+}) => {
+  const { name, type, diet } = recipeSearchFilter;
+
   return (
     <>
       <Container>
@@ -17,10 +23,9 @@ const SearchComponent = () => {
           <FormGroup>
             <Label>Search Recipes</Label>
             <Input
-              // value={listFilters.input}
-              // onChange={(e) =>
-              //   setListFilters({ ...listFilters, input: e.target.value })
-              // }
+              value={name}
+              name="name"
+              onChange={updateFormSelect}
               placeholder="Recipe Name e.g 'Pasta'"
             />
           </FormGroup>
@@ -31,13 +36,9 @@ const SearchComponent = () => {
                 <Input
                   type="select"
                   className="form-control"
-                  // value={listFilters.startcost}
-                  // onChange={(e) =>
-                  //   setListFilters({
-                  //     ...listFilters,
-                  //     startcost: e.target.value,
-                  //   })
-                  // }
+                  name="type"
+                  value={type}
+                  onChange={updateFormSelect}
                 >
                   <option value="">Select Meal Type</option>
                   <option value="main course">Main Course</option>
@@ -61,15 +62,10 @@ const SearchComponent = () => {
                 <Label>Select Diet.</Label>
                 <Input
                   type="select"
-                  name="enddate"
+                  name="diet"
                   className="form-control"
-                  // value={listFilters.endcost}
-                  // onChange={(e) =>
-                  //   setListFilters({
-                  //     ...listFilters,
-                  //     endcost: e.target.value,
-                  //   })
-                  // }
+                  value={diet}
+                  onChange={updateFormSelect}
                 >
                   <option value="">Select Diet</option>
                   <option value="gluten free">Gluten Free</option>
@@ -87,7 +83,12 @@ const SearchComponent = () => {
               </FormGroup>
             </Col>
             <Col xs="12" sm="4">
-              <Button color="info" block className="mt-2">
+              <Button
+                onClick={handleSearchRecipeClick}
+                color="info"
+                block
+                className="mt-2"
+              >
                 Search Recipe
               </Button>
             </Col>
