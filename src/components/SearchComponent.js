@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Label,
@@ -9,12 +9,19 @@ import {
   Button,
 } from "reactstrap";
 
-const SearchComponent = ({
-  recipeSearchFilter,
-  updateFormSelect,
-  handleSearchRecipeClick,
-}) => {
-  const { name, type, diet } = recipeSearchFilter;
+const SearchComponent = ({ handleSearchRecipeClick }) => {
+  const [name, setName] = useState("");
+  const [type, setType] = useState("");
+  const [diet, setDiet] = useState("");
+
+  const handleBtnSearchClick = () => {
+    const recipeSearchFilter = {
+      name,
+      type,
+      diet,
+    };
+    handleSearchRecipeClick(recipeSearchFilter);
+  };
 
   return (
     <>
@@ -22,10 +29,11 @@ const SearchComponent = ({
         <div className="background-container pt-4 pb-4 pl-3 pr-3 mb-2">
           <FormGroup>
             <Label>Search Recipes</Label>
-            <Input
+            <input
               value={name}
               name="name"
-              onChange={updateFormSelect}
+              onChange={(e) => setName(e.target.value)}
+              className="form-control"
               placeholder="Recipe Name e.g 'Pasta'"
             />
           </FormGroup>
@@ -35,10 +43,11 @@ const SearchComponent = ({
                 <Label>Select Meal Type.</Label>
                 <Input
                   type="select"
+                  id="first-dropdown"
                   className="form-control"
                   name="type"
                   value={type}
-                  onChange={updateFormSelect}
+                  onChange={(e) => setType(e.target.value)}
                 >
                   <option value="">Select Meal Type</option>
                   <option value="main course">Main Course</option>
@@ -63,9 +72,10 @@ const SearchComponent = ({
                 <Input
                   type="select"
                   name="diet"
+                  id="second-dropdown"
                   className="form-control"
                   value={diet}
-                  onChange={updateFormSelect}
+                  onChange={(e) => setDiet(e.target.value)}
                 >
                   <option value="">Select Diet</option>
                   <option value="gluten free">Gluten Free</option>
@@ -84,10 +94,11 @@ const SearchComponent = ({
             </Col>
             <Col xs="12" sm="4">
               <Button
-                onClick={handleSearchRecipeClick}
+                onClick={handleBtnSearchClick}
                 color="info"
                 block
                 className="mt-2"
+                id="btn-search-recipe"
               >
                 Search Recipe
               </Button>

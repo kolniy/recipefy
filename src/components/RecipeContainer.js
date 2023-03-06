@@ -9,7 +9,7 @@ const RecipeContainer = ({ loading, foundRecipes }) => {
       <Container className="mt-4">
         <Row className="align-items-center">
           {loading === false && foundRecipes.length === 0 ? (
-            <p className="text-center">
+            <p className="text-center justify-content-center">
               Click Search Recipe to see Found Results!
             </p>
           ) : (

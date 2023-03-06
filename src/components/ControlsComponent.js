@@ -6,21 +6,9 @@ import RecipeContainer from "./RecipeContainer";
 const ControlsComponent = () => {
   const [loading, setLoading] = useState(false);
   const [foundRecipes, setFoundRecipes] = useState([]);
-  const [recipeSearchFilter, setRecipeSearchFilter] = useState({
-    name: "",
-    type: "",
-    diet: "",
-  });
 
-  const { name, type, diet } = recipeSearchFilter;
-
-  const updateFormSelect = (e) =>
-    setRecipeSearchFilter({
-      ...recipeSearchFilter,
-      [e.target.name]: e.target.value,
-    });
-
-  const getRecipies = async () => {
+  const getRecipies = async (formInput) => {
+    const { name, diet, type } = formInput;
     try {
       setLoading(true);
       const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_SPOONACULAR_PRIVATE_KEY}&query=${name}&diet=${diet}&type=${type}`;
@@ -35,17 +23,13 @@ const ControlsComponent = () => {
     }
   };
 
-  const handleSearchRecipeClick = () => {
-    getRecipies();
+  const handleSearchRecipeClick = (formInput) => {
+    getRecipies(formInput);
   };
 
   return (
     <>
-      <SearchComponent
-        recipeSearchFilter={recipeSearchFilter}
-        updateFormSelect={updateFormSelect}
-        handleSearchRecipeClick={handleSearchRecipeClick}
-      />
+      <SearchComponent handleSearchRecipeClick={handleSearchRecipeClick} />
       <RecipeContainer loading={loading} foundRecipes={foundRecipes} />
     </>
   );
