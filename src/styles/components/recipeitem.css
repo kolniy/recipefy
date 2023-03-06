@@ -5,7 +5,8 @@
 
 .recipe__img-container {
   cursor: pointer;
-  height: 220px;
+  width: 320px;
+  height: fit-content;
   width: fit-content;
   overflow: hidden;
 }
