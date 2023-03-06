@@ -1,5 +1,13 @@
 import React from "react";
-import { Container, Label, Input, FormGroup, Row, Col } from "reactstrap";
+import {
+  Container,
+  Label,
+  Input,
+  FormGroup,
+  Row,
+  Col,
+  Button,
+} from "reactstrap";
 
 const SearchComponent = () => {
   return (
@@ -16,8 +24,8 @@ const SearchComponent = () => {
               placeholder="Recipe Name e.g 'Pasta'"
             />
           </FormGroup>
-          <Row>
-            <Col xs="12" sm="6">
+          <Row className="align-items-center">
+            <Col xs="12" sm="4">
               <FormGroup>
                 <Label>Select Meal Type.</Label>
                 <Input
@@ -48,7 +56,7 @@ const SearchComponent = () => {
                 </Input>
               </FormGroup>
             </Col>
-            <Col xs="12" sm="6">
+            <Col xs="12" sm="4">
               <FormGroup>
                 <Label>Select Diet.</Label>
                 <Input
@@ -77,6 +85,11 @@ const SearchComponent = () => {
                   <option value="whole30">Whole30</option>
                 </Input>
               </FormGroup>
+            </Col>
+            <Col xs="12" sm="4">
+              <Button color="info" block className="mt-2">
+                Search Recipe
+              </Button>
             </Col>
           </Row>
         </div>

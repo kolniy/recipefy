@@ -30,7 +30,7 @@ export const Header = () => {
                 background: "none",
               }}
             >
-              Your One Stop Place for Great Recipe Selection.
+              Your One Stop App for Great Recipe Selection.
             </p>
           </Container>
           <span />
