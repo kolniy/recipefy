@@ -1,0 +1,31 @@
+.recipe-item {
+  height: fit-content;
+  width: fit-content;
+}
+
+.recipe__img-container {
+  cursor: pointer;
+  height: 220px;
+  width: fit-content;
+  overflow: hidden;
+}
+
+.recipe__img-container img {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.recipe-name__container {
+  padding: 0.6rem 1rem;
+  background-color: aliceblue;
+  width: 100%;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.recipe-name__container p {
+  cursor: pointer;
+  font-weight: 500;
+  text-transform: capitalize;
+  margin: 0;
+}

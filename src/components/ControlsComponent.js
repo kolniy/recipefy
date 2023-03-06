@@ -26,6 +26,7 @@ const ControlsComponent = () => {
       const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_SPOONACULAR_PRIVATE_KEY}&query=${name}&diet=${diet}&type=${type}`;
       const res = await axios.get(url);
       setFoundRecipes(res.data.results);
+      console.log(res.data.results);
       setLoading(false);
     } catch (error) {
       setLoading(false);
